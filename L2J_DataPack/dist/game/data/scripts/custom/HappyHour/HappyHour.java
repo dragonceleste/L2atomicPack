@@ -81,8 +81,7 @@ public class HappyHour extends AbstractNpcAI
 	public void playerLogin(OnPlayerLogin event)
 	{
 		L2PcInstance player = event.getActiveChar();
-		
-		if ((HappyHourEvent.getInstance().getHappyHourEvent() == "ExpSp") || (HappyHourEvent.getInstance().getHappyHourEvent() == "DropSpoil"))
+		if (HappyHourEvent.getInstance().getHappyHourEvent().equals("ExpSp"))
 		{
 			broadcastToPlayerLogin(player, "La Hora Feliz esta en progreso");
 		}
@@ -90,7 +89,7 @@ public class HappyHour extends AbstractNpcAI
 	
 	private void broadcastToPlayerLogin(L2PcInstance player, String msg)
 	{
-		player.sendPacket(new CreatureSay(0, Say2.ANNOUNCEMENT, "Hora Feliz", msg));
+		player.sendPacket(new CreatureSay(0, Say2.ANNOUNCEMENT, "", msg));
 	}
 	
 	public static void main(String[] args)
